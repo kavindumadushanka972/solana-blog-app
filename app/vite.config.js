@@ -13,6 +13,7 @@ export default defineConfig({
     }]
   },
   build: {
+    outDir: 'dist',
 		minify: 'esbuild',
 		target: "esnext"
 	}
