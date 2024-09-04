@@ -149,9 +149,13 @@ export const BlogProvider = ({ children }) => {
 
   const fetchAllPosts = async () => {
     if (program) {
-      const postAccounts = await program.account.postAccount.all();
-      console.log('POSTS: ', postAccounts);
-      setPosts(postAccounts);
+      try {
+        const postAccounts = await program.account.postAccount.all();
+        console.log('POSTS: ', postAccounts);
+        setPosts(postAccounts);
+      } catch (error) {
+        console.log('Fetch posts error: ', error);
+      }
     }
   }
 
