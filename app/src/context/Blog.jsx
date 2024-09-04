@@ -50,6 +50,10 @@ export const BlogProvider = ({ children }) => {
   }, [connection, anchorWallet]);
 
   useEffect(() => {
+    fetchAllPosts();
+  }, [program])
+
+  useEffect(() => {
     const start = async () => {
       if (program && publicKey) {
         try {
@@ -65,7 +69,6 @@ export const BlogProvider = ({ children }) => {
             setUser(user);
             setInitialized(true);
           }
-          fetchAllPosts();
         } catch (error) {
           console.log('Find user error: ', error);
           setInitialized(false);
